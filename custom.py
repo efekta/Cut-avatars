@@ -1,7 +1,5 @@
 from PIL import Image
-'''
-На сколько пикселей смещать канал выберите сами. Самое хорошее решение — создать переменную и записать в неё выбранное число. Если вы передумаете достаточно будет заменить всего одну переменную.
-'''
+
 number = 100
 
 #  открыть картинку
@@ -13,7 +11,6 @@ image = image.convert("RGB")
 
 # В переменные запишутся 3 чёрно-белые картинки.
 red, green, blue = image.split()
-
 
 #  сохраняем в отдельную переменную каждую черно-белую картинку красного канала
 image_color_red = red.save("image_color_red.jpg")
@@ -54,7 +51,6 @@ coordinates = (number / 2, 0, image_color_green.width - number / 2, image_color_
 cropped = image_color_green.crop(coordinates)
 cropped_green = cropped.save("image_color_green_duble_2.jpg")
 
-
 # накладываем картинку на картинку с прозрачностью 0.5
 cropped_red_1 = Image.open("image_color_red_duble_1.jpg")
 cropped_red_2 = Image.open("image_color_red_duble_2.jpg")
@@ -64,7 +60,6 @@ cropped_green = Image.open("image_color_green_duble_2.jpg")
 
 new_image_red = Image.blend(cropped_red_1, cropped_red_2, 0.5)
 new_image_blue = Image.blend(cropped_blue_1, cropped_blue_2, 0.5)
-
 
 #  сохраняем собранные картинки
 new_image_red = new_image_red.save("result_img_red.jpg")
