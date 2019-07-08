@@ -21,6 +21,8 @@ image_color_red = red.save("image_color_red.jpg")
 #  сохраняем в отдельную переменную каждую черно-белую картинку синего канала
 image_color_blue = blue.save("image_color_blue.jpg")
 
+#  сохраняем в отдельную переменную каждую черно-белую картинку зеленого канала
+image_color_green = green.save("image_color_green.jpg")
 
 #  обрезать картинку красного канала слева, сохранив миниатюру в переменную
 image_color_red = Image.open("image_color_red.jpg")
@@ -46,7 +48,11 @@ coordinates = (number / 2, 0, image_color_blue.width - number / 2, image_color_b
 cropped = image_color_blue.crop(coordinates)
 cropped_blue_2 = cropped.save("image_color_blue_duble_2.jpg")
 
-
+#  обрезать накладываемую картинку зеленого канала с двух сторон, сохранив миниатюру в переменную
+image_color_green = Image.open("image_color_green.jpg")
+coordinates = (number / 2, 0, image_color_green.width - number / 2, image_color_green.height)
+cropped = image_color_green.crop(coordinates)
+cropped_green = cropped.save("image_color_green_duble_2.jpg")
 
 
 # накладываем картинку на картинку с прозрачностью 0.5
@@ -54,12 +60,20 @@ cropped_red_1 = Image.open("image_color_red_duble_1.jpg")
 cropped_red_2 = Image.open("image_color_red_duble_2.jpg")
 cropped_blue_1 = Image.open("image_color_blue_duble_1.jpg")
 cropped_blue_2 = Image.open("image_color_blue_duble_2.jpg")
-
+cropped_green = Image.open("image_color_green_duble_2.jpg")
 new_image_red = Image.blend(cropped_red_1, cropped_red_2, 0.5)
 new_image_blue = Image.blend(cropped_blue_1, cropped_blue_2, 0.5)
+
 
 
 
 #  сохраняем собранную картинку
 new_image_red = new_image_red.save("result_img_red.jpg")
 new_image_blue = new_image_blue.save("result_img_blue.jpg")
+
+
+print(cropped_red_2.width)
+print(cropped_red_2.height)
+print()
+print(cropped_green.width)
+print(cropped_green.height)
