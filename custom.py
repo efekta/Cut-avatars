@@ -8,7 +8,6 @@ image = Image.open("monro.jpg")
 #  конвертировать ее в RGB
 image = image.convert("RGB")
 
-
 # В переменные запишутся 3 чёрно-белые картинки.
 red, green, blue = image.split()
 
@@ -75,6 +74,9 @@ new_image = Image.merge("RGB", (new_image_red, cropped_green, new_image_blue))
 #  сохраняем собранную аватарку
 avatar_image = new_image.save("avatar_image.jpg")
 
+# изменить размер картинки
+avatar_image = Image.open("avatar_image.jpg")
+avatar_image.thumbnail((80, 80))
 
-
-
+# сохранить картинку в файл
+avatar_image_min = avatar_image.save("avatar_image_min.jpg")
