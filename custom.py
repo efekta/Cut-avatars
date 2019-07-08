@@ -61,19 +61,25 @@ cropped_red_2 = Image.open("image_color_red_duble_2.jpg")
 cropped_blue_1 = Image.open("image_color_blue_duble_1.jpg")
 cropped_blue_2 = Image.open("image_color_blue_duble_2.jpg")
 cropped_green = Image.open("image_color_green_duble_2.jpg")
+
 new_image_red = Image.blend(cropped_red_1, cropped_red_2, 0.5)
 new_image_blue = Image.blend(cropped_blue_1, cropped_blue_2, 0.5)
 
 
-
-
-#  сохраняем собранную картинку
+#  сохраняем собранные картинки
 new_image_red = new_image_red.save("result_img_red.jpg")
 new_image_blue = new_image_blue.save("result_img_blue.jpg")
+cropped_green = cropped_green.save("result_img_green.jpg")
+
+#  собираем из 3х картинок одну обратно
+new_image_red = Image.open("result_img_red.jpg")
+new_image_blue = Image.open("result_img_blue.jpg")
+cropped_green = Image.open("result_img_green.jpg")
+new_image = Image.merge("RGB", (new_image_red, cropped_green, new_image_blue))
+
+#  сохраняем собранную аватарку
+avatar_image = new_image.save("avatar_image.jpg")
 
 
-print(cropped_red_2.width)
-print(cropped_red_2.height)
-print()
-print(cropped_green.width)
-print(cropped_green.height)
+
+
